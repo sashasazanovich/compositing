@@ -1,57 +1,12 @@
-#! C:/Program Files/Nuke13.0v1/nuke-13.0.1.dll -nx
-#write_info Write1 file:"" format:"2048 1080 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1 100" fps:"0" colorspace:"default" datatype:"unknown" transfer:"unknown" views:"main" colorManagement:"Nuke"
+set cut_paste_input [stack 0]
 version 13.0 v1
-define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
-<layout version="1.0">
-    <window x="-2" y="-1" w="1620" h="1010" maximized="1" screen="0">
-        <splitter orientation="1">
-            <split size="40"/>
-            <dock id="" hideTitles="1" activePageId="Toolbar.1">
-                <page id="Toolbar.1"/>
-            </dock>
-            <split size="957" stretch="1"/>
-            <splitter orientation="2">
-                <split size="522"/>
-                <dock id="" activePageId="Viewer.1">
-                    <page id="Viewer.1"/>
-                </dock>
-                <split size="446"/>
-                <dock id="" activePageId="DAG.1" focus="true">
-                    <page id="DAG.1"/>
-                    <page id="Curve Editor.1"/>
-                    <page id="DopeSheet.1"/>
-                </dock>
-            </splitter>
-            <split size="615"/>
-            <dock id="" activePageId="Properties.1">
-                <page id="Properties.1"/>
-                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
-            </dock>
-        </splitter>
-    </window>
-</layout>
-}
-Root {
- inputs 0
- name C:/Users/sasha/Downloads/compositing_template.nk
- format "2048 1080 0 0 2048 1080 1 2K_DCP"
- proxy_type scale
- proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
- colorManagement Nuke
- workingSpaceLUT linear
- monitorLut sRGB
- monitorOutLUT rec709
- int8Lut sRGB
- int16Lut sRGB
- logLut Cineon
- floatLut linear
-}
 BackdropNode {
  inputs 0
  name BackdropNode10
  tile_color 0x232323ff
  label OCEAN
  note_font_size 100
+ selected true
  xpos -438
  ypos -150
  bdwidth 986
@@ -63,6 +18,7 @@ BackdropNode {
  tile_color 0x232323ff
  label CROWD
  note_font_size 100
+ selected true
  xpos -438
  ypos -545
  bdwidth 986
@@ -74,6 +30,7 @@ BackdropNode {
  tile_color 0x424242ff
  label GRAIN
  note_font_size 100
+ selected true
  xpos 757
  ypos 5003
  bdwidth 988
@@ -85,6 +42,7 @@ BackdropNode {
  tile_color 0x232323ff
  label "FX SPLASHES"
  note_font_size 100
+ selected true
  xpos -438
  ypos 269
  bdwidth 986
@@ -96,6 +54,7 @@ BackdropNode {
  tile_color 0x232323ff
  label SMOKE
  note_font_size 100
+ selected true
  xpos -438
  ypos 1392
  bdwidth 986
@@ -107,6 +66,7 @@ BackdropNode {
  tile_color 0x232323ff
  label EXPLOSION
  note_font_size 100
+ selected true
  xpos -438
  ypos 1680
  bdwidth 986
@@ -118,6 +78,7 @@ BackdropNode {
  tile_color 0x473c72ff
  label OPTICALS
  note_font_size 100
+ selected true
  xpos 745
  ypos 3311
  bdwidth 990
@@ -130,6 +91,7 @@ BackdropNode {
  label "<-- Add \nchromatic abberations\nhazing/diffusion\nvignette etc "
  note_font_size 42
  note_font_color 0xffffffff
+ selected true
  xpos 1793
  ypos 3316
  appearance Border
@@ -144,6 +106,7 @@ BackdropNode {
  label "Example of DI Mattes\n\nEnv \{ red = sky, green = city, blue = ocean \}\nKey \{ red = alpha \}\nFX \{ red = smoke fx , green = fire fx, blue = water fx \}"
  note_font_size 25
  note_font_color 0xffffffff
+ selected true
  xpos 1663
  ypos 6063
  appearance Border
@@ -157,6 +120,7 @@ BackdropNode {
  tile_color 0x473c72ff
  label DEFOCUS
  note_font_size 100
+ selected true
  xpos 740
  ypos 2424
  bdwidth 984
@@ -168,6 +132,7 @@ BackdropNode {
  tile_color 0x473c72ff
  label "LENS DISTORTION"
  note_font_size 100
+ selected true
  xpos 740
  ypos 2797
  bdwidth 990
@@ -179,6 +144,7 @@ BackdropNode {
  tile_color 0x3c7243ff
  label PLATE
  note_font_size 100
+ selected true
  xpos 2980
  ypos 3669
  bdwidth 986
@@ -190,6 +156,7 @@ BackdropNode {
  tile_color 0x232323ff
  label SKY
  note_font_size 100
+ selected true
  xpos 919
  ypos -2065
  bdwidth 708
@@ -201,6 +168,7 @@ BackdropNode {
  tile_color 0x232323ff
  label CITY
  note_font_size 100
+ selected true
  xpos -433
  ypos -950
  bdwidth 986
@@ -212,6 +180,7 @@ BackdropNode {
  tile_color 0x314531ff
  label WRITE
  note_font_size 100
+ selected true
  xpos 943
  ypos 5982
  bdwidth 650
@@ -223,6 +192,7 @@ BackdropNode {
  tile_color 0x232323ff
  label "<font color=\"#ff8c00\"><b>INPUTS\n<font_color=\"#cccccc\">\n\n"
  note_font_size 100
+ selected true
  xpos -2074
  ypos -3881
  bdwidth 3681
@@ -261,6 +231,7 @@ BackdropNode {
  tile_color 0x161616ff
  label "<font color=\"#ff8c00\"><b>CAMERA\n<font_color=\"#cccccc\">\n\n"
  note_font_size 50
+ selected true
  xpos -2014
  ypos -3717
  bdwidth 666
@@ -298,6 +269,7 @@ BackdropNode {
  tile_color 0x161616ff
  label "<font color=\"#ff8c00\"><b>ROTO\n<font_color=\"#cccccc\">\n\n"
  note_font_size 50
+ selected true
  xpos -192
  ypos -3705
  bdwidth 1057
@@ -335,6 +307,7 @@ BackdropNode {
  tile_color 0x161616ff
  label "<font color=\"#ff8c00\"><b>PLATES\n<font_color=\"#cccccc\">\n\n"
  note_font_size 50
+ selected true
  xpos -1295
  ypos -3714
  bdwidth 1057
@@ -372,6 +345,7 @@ BackdropNode {
  tile_color 0x161616ff
  label "<font color=\"#ff8c00\"><b>DEFOCUS\n<font_color=\"#cccccc\">\n\n"
  note_font_size 50
+ selected true
  xpos -1290
  ypos -2979
  bdwidth 1061
@@ -409,6 +383,7 @@ BackdropNode {
  tile_color 0x232323ff
  label "<font color=\"#ff8c00\"><b>WORKFLOW\n<font_color=\"#cccccc\">\n\n"
  note_font_size 100
+ selected true
  xpos -2938
  ypos -3879
  bdwidth 841
@@ -447,6 +422,7 @@ BackdropNode {
  tile_color 0x161616ff
  label "<font color=\"#ff8c00\"><b>SETUP SHOT\n<font_color=\"#cccccc\">\n\n"
  note_font_size 50
+ selected true
  xpos -2889
  ypos -3694
  bdwidth 711
@@ -484,6 +460,7 @@ BackdropNode {
  tile_color 0x232323ff
  label "<font color=\"#ff8c00\"><b>CITY LEVEL RENDERS\n<font_color=\"#cccccc\">\n\n"
  note_font_size 100
+ selected true
  xpos -1314
  ypos -1202
  bdwidth 1868
@@ -521,6 +498,7 @@ BackdropNode {
  tile_color 0x333333ff
  label "Bokeh Shape"
  note_font_size 25
+ selected true
  xpos -1254
  ypos -2862
  bdwidth 235
@@ -533,6 +511,7 @@ BackdropNode {
  tile_color 0x333333ff
  label "Defocus Nodes"
  note_font_size 25
+ selected true
  xpos -970
  ypos -2861
  bdwidth 232
@@ -545,6 +524,7 @@ BackdropNode {
  tile_color 0x333333ff
  label "Defocus Controls"
  note_font_size 25
+ selected true
  xpos -597
  ypos -2867
  bdwidth 237
@@ -558,6 +538,7 @@ BackdropNode {
  label "Here go instructions on how to use this template. For example:\n\n1 - Import Cameras and Lens Distortion \n\n2 - Import all elements\n\n3 - Setup the defocus node"
  note_font Verdana
  note_font_size 20
+ selected true
  xpos -2888
  ypos -3586
  bdwidth 710
@@ -567,6 +548,7 @@ BackdropNode {
 Dot {
  inputs 0
  name Dot12
+ selected true
  xpos 1451
  ypos 5358
 }
@@ -574,6 +556,7 @@ Constant {
  inputs 0
  channels rgb
  name Constant2
+ selected true
  xpos -904
  ypos -3568
 }
@@ -585,6 +568,7 @@ NoOp {
  autolabel "nuke.thisNode().knob(\"title\").value()"
  tile_color 0xffffff01
  note_font_size 20
+ selected true
  xpos -904
  ypos -3361
  addUserKnob {20 anchor_tab l "Anchor Stamp"}
@@ -616,6 +600,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 1087
  ypos 5149
  hide_input true
@@ -660,6 +645,7 @@ PostageStamp {
 }
 Dot {
  name Dot26
+ selected true
  xpos 1121
  ypos 5301
 }
@@ -667,6 +653,7 @@ Constant {
  inputs 0
  channels rgb
  name Constant1
+ selected true
  xpos -1129
  ypos -3567
 }
@@ -678,6 +665,7 @@ NoOp {
  autolabel "nuke.thisNode().knob(\"title\").value()"
  tile_color 0xffffff01
  note_font_size 20
+ selected true
  xpos -1129
  ypos -3359
  addUserKnob {20 anchor_tab l "Anchor Stamp"}
@@ -709,6 +697,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 887
  ypos 5147
  hide_input true
@@ -753,6 +742,7 @@ PostageStamp {
 }
 Dot {
  name Dot25
+ selected true
  xpos 921
  ypos 5358
 }
@@ -760,6 +750,7 @@ Constant {
  inputs 0
  channels rgb
  name Constant5
+ selected true
  xpos 226
  ypos -3540
 }
@@ -771,6 +762,7 @@ NoOp {
  autolabel "nuke.thisNode().knob(\"title\").value()"
  tile_color 0xffffff01
  note_font_size 20
+ selected true
  xpos 226
  ypos -3317
  addUserKnob {20 anchor_tab l "Anchor Stamp"}
@@ -802,6 +794,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 3709
  ypos 4480
  hide_input true
@@ -848,6 +841,7 @@ Constant {
  inputs 0
  channels rgb
  name Constant4
+ selected true
  xpos -47
  ypos -3542
 }
@@ -859,6 +853,7 @@ NoOp {
  autolabel "nuke.thisNode().knob(\"title\").value()"
  tile_color 0xffffff01
  note_font_size 20
+ selected true
  xpos -47
  ypos -3319
  addUserKnob {20 anchor_tab l "Anchor Stamp"}
@@ -890,6 +885,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 3708
  ypos 4402
  hide_input true
@@ -942,6 +938,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 3467
  ypos 4013
  hide_input true
@@ -992,11 +989,13 @@ Shuffle2 {
  mappings "4 rgba.red 0 0 degrained_plate.red 0 0 rgba.green 0 1 degrained_plate.green 0 1 rgba.blue 0 2 degrained_plate.blue 0 2 rgba.alpha 0 3 degrained_plate.alpha 0 3"
  name Shuffle9
  label "\[value out1]"
+ selected true
  xpos 3467
  ypos 4080
 }
 Dot {
  name Dot6
+ selected true
  xpos 3501
  ypos 4154
 }
@@ -1043,12 +1042,14 @@ OFXuk.co.thefoundry.keylight.keylight_v201 {
  outsideComponent None
  cacheBreaker true
  name Keylight1
+ selected true
  xpos 3467
  ypos 4252
 }
 ChannelMerge {
  inputs 2
  name ChannelMerge1
+ selected true
  xpos 3467
  ypos 4393
  disable true
@@ -1057,6 +1058,7 @@ ChannelMerge {
  inputs 2
  operation stencil
  name ChannelMerge2
+ selected true
  xpos 3467
  ypos 4471
  disable true
@@ -1072,6 +1074,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 3156
  ypos 3803
  hide_input true
@@ -1118,6 +1121,7 @@ Copy {
  inputs 2
  channels degrained_plate
  name Copy2
+ selected true
  xpos 3156
  ypos 4137
 }
@@ -1127,11 +1131,13 @@ Copy {
  from0 rgba.alpha
  to0 rgba.alpha
  name Copy1
+ selected true
  xpos 3156
  ypos 4478
 }
 Premult {
  name Premult1
+ selected true
  xpos 3156
  ypos 4545
 }
@@ -1143,17 +1149,20 @@ Shuffle2 {
  mappings "3 black -1 -1 key.green 0 1 black -1 -1 key.blue 0 2 rgba.alpha 0 3 key.red 0 0"
  name Shuffle8
  label "\[value out1]"
+ selected true
  xpos 3156
  ypos 4645
 }
 Dot {
  name Dot35
+ selected true
  xpos 3190
  ypos 4780
 }
 NoOp {
  inputs 0
  name lens_distortion_stmap
+ selected true
  xpos -1622
  ypos -3528
 }
@@ -1165,6 +1174,7 @@ NoOp {
  autolabel "nuke.thisNode().knob(\"title\").value()"
  tile_color 0xffffff01
  note_font_size 20
+ selected true
  xpos -1622
  ypos -3372
  addUserKnob {20 anchor_tab l "Anchor Stamp"}
@@ -1196,6 +1206,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 1450
  ypos 2997
  hide_input true
@@ -1243,6 +1254,7 @@ Constant {
  channels rgb
  format "256 256 0 0 256 256 1 square_256"
  name Constant3
+ selected true
  xpos -1183
  ypos -2814
 }
@@ -1250,6 +1262,7 @@ Radial {
  area {2.400000095 0.7999999523 252.8000031 248.6000061}
  softness 0.1
  name Radial1
+ selected true
  xpos -1183
  ypos -2742
 }
@@ -1258,6 +1271,7 @@ TransformMasked {
  translate {2 0}
  center {128 128}
  name Transform1
+ selected true
  xpos -1183
  ypos -2716
 }
@@ -1269,6 +1283,7 @@ NoOp {
  autolabel "nuke.thisNode().knob(\"title\").value()"
  tile_color 0xffffff01
  note_font_size 20
+ selected true
  xpos -1183
  ypos -2614
  addUserKnob {20 anchor_tab l "Anchor Stamp"}
@@ -1300,6 +1315,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 1457
  ypos 2587
  hide_input true
@@ -1346,6 +1362,7 @@ Dot {
  inputs 0
  name Dot14
  note_font_size 100
+ selected true
  xpos 197
  ypos 1802
 }
@@ -1357,6 +1374,7 @@ Shuffle2 {
  mappings "3 black -1 -1 fx.blue 0 2 black -1 -1 fx.red 0 0 rgba.alpha 0 3 fx.green 0 1"
  name Shuffle6
  label "\[value out1]"
+ selected true
  xpos 295
  ypos 1792
 }
@@ -1365,6 +1383,7 @@ Remove {
  channels rgba
  channels2 fx
  name Remove6
+ selected true
  xpos 430
  ypos 1798
 }
@@ -1372,6 +1391,7 @@ Dot {
  inputs 0
  name Dot13
  note_font_size 100
+ selected true
  xpos 197
  ypos 1556
 }
@@ -1382,6 +1402,7 @@ Shuffle2 {
  mappings "3 black -1 -1 fx.green 0 1 black -1 -1 fx.blue 0 2 rgba.alpha 0 3 fx.red 0 0"
  name Shuffle5
  label "\[value out1]"
+ selected true
  xpos 295
  ypos 1546
 }
@@ -1390,12 +1411,14 @@ Remove {
  channels rgba
  channels2 fx
  name Remove5
+ selected true
  xpos 430
  ypos 1552
 }
 Dot {
  inputs 0
  name Dot21
+ selected true
  xpos 611
  ypos 1490
 }
@@ -1403,6 +1426,7 @@ Merge2 {
  inputs 2
  also_merge all
  name Merge8
+ selected true
  xpos 577
  ypos 1552
 }
@@ -1410,11 +1434,13 @@ Merge2 {
  inputs 2
  also_merge all
  name Merge9
+ selected true
  xpos 577
  ypos 1798
 }
 Dot {
  name Dot31
+ selected true
  xpos 611
  ypos 1861
 }
@@ -1422,6 +1448,7 @@ Dot {
  inputs 0
  name Dot8
  note_font_size 100
+ selected true
  xpos 197
  ypos 403
 }
@@ -1432,6 +1459,7 @@ Shuffle2 {
  mappings "3 black -1 -1 fx.red 0 0 black -1 -1 fx.green 0 1 rgba.alpha 0 3 fx.blue 0 2"
  name Shuffle3
  label "\[value out1]"
+ selected true
  xpos 289
  ypos 393
 }
@@ -1440,6 +1468,7 @@ Remove {
  channels rgba
  channels2 fx
  name Remove3
+ selected true
  xpos 430
  ypos 399
 }
@@ -1447,6 +1476,7 @@ Dot {
  inputs 0
  name Dot7
  note_font_size 100
+ selected true
  xpos 197
  ypos -27
 }
@@ -1458,6 +1488,7 @@ Shuffle2 {
  mappings "3 black -1 -1 env.red 0 0 black -1 -1 env.green 0 1 rgba.alpha 0 3 env.blue 0 2"
  name Shuffle2
  label "\[value out1]"
+ selected true
  xpos 291
  ypos -37
 }
@@ -1466,6 +1497,7 @@ Remove {
  channels rgba
  channels2 env
  name Remove2
+ selected true
  xpos 425
  ypos -31
 }
@@ -1473,6 +1505,7 @@ Dot {
  inputs 0
  name Dot9
  note_font_size 100
+ selected true
  xpos 197
  ypos -422
 }
@@ -1483,6 +1516,7 @@ Shuffle2 {
  mappings "3 black -1 -1 env.red 0 0 black -1 -1 env.blue 0 2 rgba.alpha 0 3 env.green 0 1"
  name Shuffle7
  label "\[value out1]"
+ selected true
  xpos 291
  ypos -432
 }
@@ -1491,6 +1525,7 @@ Remove {
  channels rgba
  channels2 env
  name Remove7
+ selected true
  xpos 425
  ypos -426
 }
@@ -1498,6 +1533,7 @@ Dot {
  inputs 0
  name Dot3
  note_font_size 100
+ selected true
  xpos 197
  ypos -828
 }
@@ -1508,6 +1544,7 @@ Shuffle2 {
  mappings "3 black -1 -1 env.red 0 0 black -1 -1 env.blue 0 2 rgba.alpha 0 3 env.green 0 1"
  name Shuffle1
  label "\[value out1]"
+ selected true
  xpos 290
  ypos -838
 }
@@ -1516,12 +1553,14 @@ Remove {
  channels rgba
  channels2 env
  name Remove1
+ selected true
  xpos 430
  ypos -832
 }
 Dot {
  inputs 0
  name Dot4
+ selected true
  xpos 611
  ypos -982
 }
@@ -1529,6 +1568,7 @@ Merge2 {
  inputs 2
  also_merge all
  name Merge2
+ selected true
  xpos 577
  ypos -832
 }
@@ -1536,6 +1576,7 @@ Merge2 {
  inputs 2
  also_merge all
  name Merge3
+ selected true
  xpos 577
  ypos -426
 }
@@ -1543,6 +1584,7 @@ Merge2 {
  inputs 2
  also_merge all
  name Merge6
+ selected true
  xpos 577
  ypos -31
 }
@@ -1550,17 +1592,20 @@ Merge2 {
  inputs 2
  also_merge all
  name Merge7
+ selected true
  xpos 577
  ypos 399
 }
 Dot {
  name Dot15
+ selected true
  xpos 611
  ypos 626
 }
 Camera3 {
  inputs 0
  name Render_Camera_v01
+ selected true
  xpos -1921
  ypos -3552
 }
@@ -1572,6 +1617,7 @@ NoOp {
  autolabel "nuke.thisNode().knob(\"title\").value()"
  tile_color 0xffffff01
  note_font_size 20
+ selected true
  xpos -1931
  ypos -3370
  addUserKnob {20 anchor_tab l "Anchor Stamp"}
@@ -1614,6 +1660,7 @@ Camera {
  tile_color 0x33000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 1448
  ypos -1822
  hide_input true
@@ -1681,11 +1728,12 @@ Camera {
  addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
 }
 push 0
+push $cut_paste_input
 Dot {
- inputs 0
  name Dot1
  label "sky "
  note_font_size 50
+ selected true
  xpos 1219
  ypos -1984
 }
@@ -1696,6 +1744,7 @@ ScanlineRender {
  samples 10
  motion_vectors_type distance
  name ScanlineRender1
+ selected true
  xpos 1185
  ypos -1802
 }
@@ -1706,6 +1755,7 @@ Shuffle2 {
  mappings "3 black -1 -1 env.blue 0 2 black -1 -1 env.green 0 1 rgba.alpha 0 3 env.red 0 0"
  name Shuffle4
  label "\[value out1]"
+ selected true
  xpos 1185
  ypos -1625
 }
@@ -1714,11 +1764,13 @@ Remove {
  channels rgba
  channels2 env
  name Remove4
+ selected true
  xpos 1185
  ypos -1572
 }
 Dot {
  name Dot2
+ selected true
  xpos 1219
  ypos -1446
 }
@@ -1726,6 +1778,7 @@ Merge2 {
  inputs 2
  also_merge all
  name Merge1
+ selected true
  xpos 1185
  ypos 622
 }
@@ -1733,11 +1786,13 @@ Merge2 {
  inputs 2
  also_merge all
  name Merge4
+ selected true
  xpos 1185
  ypos 1857
 }
 Dot {
  name Dot32
+ selected true
  xpos 1219
  ypos 2518
 }
@@ -1751,17 +1806,20 @@ ZDefocus2 {
  legacy_resize_mode false
  show_legacy_resize_mode false
  name ZDefocus3
+ selected true
  xpos 1185
  ypos 2585
 }
 Dot {
  name Dot33
+ selected true
  xpos 1219
  ypos 2930
 }
 STMap {
  inputs 2
  name STMap1
+ selected true
  xpos 1185
  ypos 2995
 }
@@ -1769,6 +1827,7 @@ Crop {
  box {{-root.width*OversizePercentage/100} {-root.height*OversizePercentage/100} {root.width*OversizePercentage/100+root.width} {root.height*OversizePercentage/100+root.height}}
  name Crop_Overscan1
  label "\[value OversizePercentage]%"
+ selected true
  xpos 1185
  ypos 3183
  addUserKnob {20 User l Oversize}
@@ -1779,11 +1838,13 @@ Merge2 {
  inputs 2
  also_merge key
  name Merge5
+ selected true
  xpos 1185
  ypos 4776
 }
 Dot {
  name Dot5
+ selected true
  xpos 1219
  ypos 5089
 }
@@ -1795,6 +1856,7 @@ Group {
  knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\n\nif k.name() == 'box':\n    this_frame = nuke.frame()\n    n\['sample_frame'].setValue(this_frame)"
  tile_color 0x7f7f7fff
  label "v1.5 | 2019-05-18"
+ selected true
  xpos 1185
  ypos 5341
  addUserKnob {20 Analyse_tab l Analyse}
@@ -3156,6 +3218,7 @@ push $N623b7400
 end_group
 Dot {
  name Dot34
+ selected true
  xpos 1219
  ypos 5934
 }
@@ -3167,16 +3230,19 @@ Remove {
  channels4 key
  name Remove8
  label "Removed all extra channels and keep DI mattes only"
+ selected true
  xpos 1185
  ypos 6114
 }
 Reformat {
  name Reformat1
+ selected true
  xpos 1185
  ypos 6179
 }
 Write {
  name Write1
+ selected true
  xpos 1185
  ypos 6266
 }
@@ -3190,6 +3256,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos -1129
  ypos -3303
  hide_input true
@@ -3243,6 +3310,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos -904
  ypos -3302
  hide_input true
@@ -3286,11 +3354,12 @@ PostageStamp {
  addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
  addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
 }
+push $cut_paste_input
 ZDefocus2 {
- inputs 0
  legacy_resize_mode false
  show_legacy_resize_mode false
  name ZDefocus1
+ selected true
  xpos -905
  ypos -2743
 }
@@ -3299,6 +3368,7 @@ ZDefocus2 {
  legacy_resize_mode false
  show_legacy_resize_mode false
  name ZDefocus2
+ selected true
  xpos -519
  ypos -2746
 }
@@ -3312,6 +3382,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos -1183
  ypos -2570
  hide_input true
@@ -3365,6 +3436,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos -47
  ypos -3263
  hide_input true
@@ -3418,6 +3490,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos 226
  ypos -3261
  hide_input true
@@ -3466,6 +3539,7 @@ Group {
  name DegrainHelper
  help "If you need some extra detail to work with, you can use this to reintroduce luminance grain to your degrained plate.\n\nThe degrained plate has to be completely degrained.\n\nThe slider controls how much luminance grain will be present in the output."
  tile_color 0x7f7f7fff
+ selected true
  xpos 1596
  ypos 5119
  addUserKnob {20 User}
@@ -3528,13 +3602,15 @@ Viewer {
  frame 1
  frame_range 1-100
  name Viewer1
+ selected true
  xpos -17
  ypos -68
 }
+push $cut_paste_input
 Grain2 {
- inputs 0
  name Grain2_2
  label "Kodak 5248"
+ selected true
  xpos 1573
  ypos 5341
  black {0 0 0}
@@ -3561,6 +3637,7 @@ Camera {
  tile_color 0x33000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos -1921
  ypos -3289
  hide_input true
@@ -3639,6 +3716,7 @@ PostageStamp {
  tile_color 0x1000001
  note_font Verdana
  note_font_size 20
+ selected true
  xpos -1622
  ypos -3287
  hide_input true
@@ -3687,6 +3765,7 @@ StickyNote {
  name StickyNote2
  label "   <-- Add your roto   "
  note_font_size 30
+ selected true
  xpos 388
  ypos -3541
 }
@@ -3695,6 +3774,7 @@ StickyNote {
  name StickyNote1
  label "     <-- Add your plate and     \n degrained plate"
  note_font_size 30
+ selected true
  xpos -769
  ypos -3566
 }
