@@ -124,7 +124,7 @@ Colorspace {
  ypos 9
 }
 Crop {
- box {0 341 1920 686}
+ box {0 304 1920 630}
  name Crop1
  label "Crop to remove Red"
  xpos 126
@@ -176,7 +176,7 @@ Group {
   xpos -711
   ypos 66
  }
-set N8bfae400 [stack 0]
+set N5565c00 [stack 0]
  Expression {
   temp_name0 rr
   temp_expr0 ((0.5+x)/width)+ax
@@ -202,7 +202,7 @@ set N8bfae400 [stack 0]
   addUserKnob {7 ry l Ry}
   ry 0.5
  }
-push $N8bfae400
+push $N5565c00
  Expression {
   temp_name0 gg
   temp_expr0 (0.5+x)/(width)-.5
@@ -231,7 +231,7 @@ push $N8bfae400
   xpos -638
   ypos 180
  }
-push $N8bfae400
+push $N5565c00
  STMap {
   inputs 2
   uv rgb
