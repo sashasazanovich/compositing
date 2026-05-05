@@ -1,0 +1,415 @@
+Group {
+ name halation_v01
+ selected true
+ xpos 3208
+ ypos 2179
+ addUserKnob {20 Halation}
+ addUserKnob {26 Tolerance}
+ addUserKnob {41 Curve T luma_keyer.Curve}
+ addUserKnob {41 PostGamma l "Post Gamma" T luma_keyer.PostGamma}
+ addUserKnob {26 ""}
+ addUserKnob {26 Size_tab l "Effect Size"}
+ addUserKnob {41 size l red T Blur1.size}
+ addUserKnob {41 size_1 l green T Blur4.size}
+ addUserKnob {41 size_2 l blue T Blur6.size}
+ addUserKnob {26 ""}
+ addUserKnob {4 mode l "Preview Mode" M {"Final Output" "Effect Only" "Premulted Source" ""}}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 mix l Mix T Multiply1.value}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 0
+  ypos -188
+ }
+ Dot {
+  name Dot1
+  xpos 34
+  ypos 75
+ }
+set Nd0b20400 [stack 0]
+ ColorLookup {
+  mix 0.5
+  name ColorLookup1
+  xpos -297
+  ypos 71
+ }
+set Nd0acbc00 [stack 0]
+ Group {
+  name luma_keyer
+  tile_color 0x1373a8ff
+  xpos -297
+  ypos 97
+  addUserKnob {20 luma_keyer}
+  addUserKnob {7 Curve R 0 3}
+  Curve 1
+  addUserKnob {26 ""}
+  addUserKnob {20 RefineMatte n 1}
+  addUserKnob {7 Preblack l "Pre blackpoint"}
+  addUserKnob {26 ""}
+  addUserKnob {7 PostBlack l "Post blackpoint"}
+  addUserKnob {7 PostWhite l "Post whitepoint"}
+  PostWhite 1
+  addUserKnob {7 PostGamma l "Post Gamma" R 0 2}
+  PostGamma 0.5
+  addUserKnob {20 endGroup n -1}
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos 0
+  }
+  Dot {
+   name Dot1
+   xpos 34
+   ypos 68
+  }
+set Nd0acb400 [stack 0]
+  ColorCorrect {
+   saturation 0
+   name ColorCorrect1
+   xpos 143
+   ypos 103
+  }
+set Nd0acb000 [stack 0]
+  Add {
+   value {{-parent.Preblack}}
+   name Add1
+   xpos 328
+   ypos 226
+  }
+  Clamp {
+   channels {rgba.red -rgba.green -rgba.blue none}
+   name Clamp1
+   xpos 328
+   ypos 264
+  }
+  Expression {
+   temp_name0 Curve
+   temp_expr0 parent.Curve
+   expr0 1-exp(-r*Curve)
+   name Expression1
+   xpos 328
+   ypos 290
+  }
+push $Nd0acb000
+push $Nd0acb000
+  Grade {
+   blackpoint {{parent.Preblack}}
+   reverse true
+   name Grade1
+   xpos 325
+   ypos 103
+  }
+  Merge2 {
+   inputs 2
+   operation from
+   name Merge1
+   xpos 325
+   ypos 163
+  }
+push $Nd0acb000
+  Multiply {
+   inputs 1+1
+   value 0
+   name Multiply1
+   xpos 143
+   ypos 182
+  }
+  Expression {
+   temp_name0 Curve
+   temp_expr0 parent.Curve
+   expr0 1-exp(-r*Curve)
+   name Expression2
+   xpos 143
+   ypos 265
+  }
+  Switch {
+   inputs 2
+   which {{UseHardBlackpoint}}
+   name Switch1
+   xpos 143
+   ypos 340
+  }
+  Grade {
+   channels {rgba.red -rgba.green -rgba.blue none}
+   blackpoint {{parent.PostBlack}}
+   whitepoint {{parent.PostWhite}}
+   gamma {{parent.PostGamma}}
+   name Grade2
+   selected true
+   xpos 143
+   ypos 391
+  }
+push $Nd0acb400
+  Copy {
+   inputs 2
+   from0 rgba.red
+   to0 rgba.alpha
+   name Copy1
+   xpos 0
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 0
+   ypos 581
+  }
+ end_group
+ Premult {
+  name Premult1
+  xpos -297
+  ypos 123
+ }
+ Dot {
+  name Dot2
+  xpos -263
+  ypos 258
+ }
+set Nd0a3b800 [stack 0]
+push $Nd0a3b800
+ Dot {
+  name Dot3
+  xpos -263
+  ypos 695
+ }
+push $Nd0a3b800
+ Blur {
+  channels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+  size 2.8
+  name Blur1
+  xpos -430
+  ypos 326
+ }
+ Blur {
+  channels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+  size {{parent.Blur1.size*1.8}}
+  mix 0.25
+  name Blur2
+  xpos -430
+  ypos 352
+ }
+ Blur {
+  channels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+  size {{parent.Blur1.size*9}}
+  mix 0.1
+  name Blur3
+  xpos -430
+  ypos 378
+ }
+ Blur {
+  channels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+  size 1.25
+  mix 0.1
+  name Blur4
+  xpos -430
+  ypos 431
+ }
+ Blur {
+  channels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+  size {{parent.Blur4.size*2.5}}
+  mix 0.025
+  name Blur5
+  xpos -430
+  ypos 457
+ }
+ Blur {
+  channels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+  name Blur6
+  xpos -430
+  ypos 532
+ }
+ Blur {
+  channels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+  size {{parent.Blur6.size*1.8}}
+  mix 0.25
+  name Blur7
+  xpos -430
+  ypos 558
+ }
+ Blur {
+  channels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+  size {{parent.Blur6.size*8.8}}
+  mix 0.1
+  name Blur8
+  xpos -430
+  ypos 584
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge2
+  xpos -430
+  ypos 691
+ }
+ Multiply {
+  value 0.35
+  name Multiply1
+  xpos -430
+  ypos 880
+ }
+set Nd0a38c00 [stack 0]
+ Group {
+  name luma_keyer_1
+  tile_color 0x1373a8ff
+  selected true
+  xpos -430
+  ypos 959
+  addUserKnob {20 luma_keyer}
+  addUserKnob {7 Curve R 0 3}
+  Curve 1
+  addUserKnob {26 ""}
+  addUserKnob {20 RefineMatte n 1}
+  addUserKnob {7 Preblack l "Pre blackpoint"}
+  addUserKnob {26 ""}
+  addUserKnob {7 PostBlack l "Post blackpoint"}
+  addUserKnob {7 PostWhite l "Post whitepoint"}
+  PostWhite 1
+  addUserKnob {7 PostGamma l "Post Gamma" R 0 2}
+  PostGamma 1
+  addUserKnob {20 endGroup n -1}
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos 0
+  }
+  Dot {
+   name Dot1
+   xpos 34
+   ypos 68
+  }
+set Nd0a38400 [stack 0]
+  ColorCorrect {
+   saturation 0
+   name ColorCorrect1
+   xpos 143
+   ypos 103
+  }
+set Nd09dbc00 [stack 0]
+  Add {
+   value {{-parent.Preblack}}
+   name Add1
+   xpos 328
+   ypos 226
+  }
+  Clamp {
+   channels {rgba.red -rgba.green -rgba.blue none}
+   name Clamp1
+   xpos 328
+   ypos 264
+  }
+  Expression {
+   temp_name0 Curve
+   temp_expr0 parent.Curve
+   expr0 1-exp(-r*Curve)
+   name Expression1
+   xpos 328
+   ypos 290
+  }
+push $Nd09dbc00
+push $Nd09dbc00
+  Grade {
+   blackpoint {{parent.Preblack}}
+   reverse true
+   name Grade1
+   xpos 325
+   ypos 103
+  }
+  Merge2 {
+   inputs 2
+   operation from
+   name Merge1
+   xpos 325
+   ypos 163
+  }
+push $Nd09dbc00
+  Multiply {
+   inputs 1+1
+   value 0
+   name Multiply1
+   xpos 143
+   ypos 182
+  }
+  Expression {
+   temp_name0 Curve
+   temp_expr0 parent.Curve
+   expr0 1-exp(-r*Curve)
+   name Expression2
+   xpos 143
+   ypos 265
+  }
+  Switch {
+   inputs 2
+   which {{UseHardBlackpoint}}
+   name Switch1
+   xpos 143
+   ypos 340
+  }
+  Grade {
+   channels {rgba.red -rgba.green -rgba.blue none}
+   blackpoint {{parent.PostBlack}}
+   whitepoint {{parent.PostWhite}}
+   gamma {{parent.PostGamma}}
+   name Grade2
+   selected true
+   xpos 143
+   ypos 391
+  }
+push $Nd0a38400
+  Copy {
+   inputs 2
+   from0 rgba.red
+   to0 rgba.alpha
+   name Copy1
+   xpos 0
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 0
+   ypos 581
+  }
+ end_group
+set Nd0a51d00 [stack 0]
+push $Nd0a51d00
+push $Nd0a38c00
+push $Nd0b20400
+ Merge2 {
+  inputs 2
+  operation plus
+  bbox B
+  name Plus
+  xpos 0
+  ypos 886
+ }
+ Merge2 {
+  inputs 2
+  operation max
+  bbox B
+  output {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+  name Merge1
+  xpos 0
+  ypos 953
+ }
+ Switch {
+  inputs 3
+  which {{parent.mode}}
+  name Switch1
+  xpos 0
+  ypos 1070
+ }
+ Output {
+  name Output1
+  xpos 0
+  ypos 1195
+ }
+push $Nd0acbc00
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos -120
+  ypos 229
+ }
+end_group
